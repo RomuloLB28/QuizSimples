@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FECQUIZ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">FECQUIZ</div>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-item">Tela Inicial</a>
+      <a href="ranking.html" class="nav-item">Ranking</a>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- Seção inicial -->
+    <div class="intro">
+      <h1>Bem-vindo ao FECQUIZ!</h1>
+      <p>Teste seus conhecimentos de forma divertida!</p>
+      <button class="btn-pulsar" onclick="showNameInput()">Começar Quiz</button>
+    </div>
+    
+    <!-- Seção para inserir nome -->
+    <div class="name-input" style="display: none;">
+      <p>Insira seu nome para começar:</p>
+      <input type="text" id="username" placeholder="Seu nome">
+      <button class="btn-iniciar" onclick="startQuiz()">Iniciar</button>
+    </div>
+
+    <!-- Seção do quiz -->
+    <div class="quiz" style="display: none;">
+      <p class="question"></p>
+      <div class="options"></div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
