@@ -50,8 +50,61 @@
     padding: 20px;
     text-align: center;
   }
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os itens */
+  }
+  .quiz-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .question-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px 0;
+  }
+  
+  .question-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre a pergunta e o botão */
+  }
+  
+  .speak-button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .speak-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .speak-button .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+  }
+  
   
   button {
+    width: 100%; /* Para ocupar toda a largura do container, opcional */
+    max-width: 300px; /* Para limitar o tamanho dos botões */
+    text-align: center;
     padding: 10px 20px;
     background-color: #007bff;
     border: none;
@@ -64,12 +117,36 @@
   button:hover {
     background-color: #0056b3;
   }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento vertical entre os botões */
+  }
+  
+  .option-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .option-button.correct {
+    background-color: #28a745; /* Verde para resposta correta */
+    color: #fff;
+  }
+  
+  .option-button.incorrect {
+    background-color: #dc3545; /* Vermelho para resposta incorreta */
+    color: #fff;
+  }
+  
   
   /* Animação do botão de "pulsar" */
   .btn-pulsar {
     animation: pulsar 1.5s infinite;
   }
-  
   @keyframes pulsar {
     0%, 100% {
       transform: scale(1);

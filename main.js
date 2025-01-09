@@ -2,11 +2,11 @@ let currentQuestionIndex = 0;
 let score = 0;
 let username = "";
 const questions = [
-  { question: "Qual é a capital do Brasil?", options: ["Rio", "Brasília", "São Paulo"], answer: 1 },
-  { question: "2 + 2 é igual a?", options: ["3", "4", "5"], answer: 1 },
-  { question: "Qual é a cor do céu?", options: ["Azul", "Verde", "Roxo"], answer: 0 },
-  { question: "Quantos meses tem um ano?", options: ["12", "10", "15"], answer: 0 },
-  { question: "Qual é o maior planeta?", options: ["Marte", "Terra", "Júpiter"], answer: 2 },
+  { question: "Qual é a capital do Brasil?", options: ["Rio", "Brasília", "São Paulo"], answer: 1, image: "imagens/imagem1.jpeg" },
+  { question: "2 + 2 é igual a?", options: ["3", "4", "5"], answer: 1, image: "imagens/imagem2.jpg" },
+  { question: "Qual é a cor do céu?", options: ["Azul", "Verde", "Roxo"], answer: 0, image: "imagens/imagem3.jpg" },
+  { question: "Quantos meses tem um ano?", options: ["12", "10", "15"], answer: 0, image: "imagens/imagem4.jpg" },
+  { question: "Qual é o maior planeta?", options: ["Marte", "Terra", "Júpiter"], answer: 2, image: "imagens/imagem5.jpg" },
 ];
 
 // Mostra o campo de inserir nome
@@ -30,35 +30,74 @@ function startQuiz() {
   loadQuestion();
 }
 
-// Carrega a pergunta atual
 function loadQuestion() {
-  const questionObj = questions[currentQuestionIndex];
   const questionElement = document.querySelector(".question");
-  const optionsElement = document.querySelector(".options");
+  const imageElement = document.querySelector(".question-image"); // Elemento de imagem
+  const optionsContainer = document.querySelector(".options");
 
-  questionElement.textContent = questionObj.question;
-  optionsElement.innerHTML = "";
+  const currentQuestion = questions[currentQuestionIndex];
+  questionElement.textContent = currentQuestion.question;
+  imageElement.src = currentQuestion.image || ""; // Atualiza a imagem, se houver
+  optionsContainer.innerHTML = ""; // Limpa as opções anteriores
 
-  questionObj.options.forEach((option, index) => {
+  currentQuestion.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.textContent = option;
-    button.addEventListener("click", () => checkAnswer(index));
-    optionsElement.appendChild(button);
+    button.classList.add("option-button");
+    button.dataset.index = index; // Salva o índice da opção
+    button.onclick = () => checkAnswer(index, button); // Passa o índice para a função
+    optionsContainer.appendChild(button);
   });
 }
 
-// Verifica a resposta e avança para a próxima pergunta
-function checkAnswer(selectedOption) {
-  if (selectedOption === questions[currentQuestionIndex].answer) {
+
+// Fala a pergunta e todas as opções
+function speakAll() {
+  const questionText = document.querySelector(".question").innerText;
+  const options = [...document.querySelectorAll(".option-button")].map(option => option.innerText);
+  const fullText = `${questionText}. As opções são: ${options.join(", ")}`; // Concatena pergunta e opções
+  speakText(fullText);
+}
+
+// Converte qualquer texto em áudio
+function speakText(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'pt-BR'; // Configura o idioma para português
+  window.speechSynthesis.speak(utterance);
+}
+
+function checkAnswer(selectedIndex, buttonElement) {
+  const correctAnswer = questions[currentQuestionIndex].answer;
+  const optionsContainer = document.querySelector(".options");
+
+  // Desativar todos os botões
+  const buttons = optionsContainer.querySelectorAll("button");
+  buttons.forEach(btn => (btn.disabled = true));
+
+  // Aplicar estilo de acordo com a resposta
+  if (selectedIndex === correctAnswer) {
+    buttonElement.classList.add("correct"); // Verde para correto
     score++;
+  } else {
+    buttonElement.classList.add("incorrect"); // Vermelho para incorreto
+
+    // Destacar a resposta correta
+    buttons.forEach(btn => {
+      if (btn.dataset.index == correctAnswer) {
+        btn.classList.add("correct");
+      }
+    });
   }
 
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    loadQuestion();
-  } else {
-    endQuiz();
-  }
+  // Avançar para a próxima pergunta após 2 segundos
+  setTimeout(() => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      loadQuestion();
+    } else {
+      endQuiz();
+    }
+  }, 2000);
 }
 
 // Finaliza o quiz
