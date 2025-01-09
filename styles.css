@@ -13,6 +13,22 @@
     flex-direction: column;
     min-height: 100vh;
   }
+  .input-name {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc; /* Cor de borda suave */
+    border-radius: 8px; /* Bordas arredondadas */
+    font-size: 16px;
+    color: #333333; /* Cor do texto */
+    background-color: #f8f8f8; /* Fundo claro */
+    margin-bottom: 20px; /* Espaçamento abaixo */
+    outline: none; /* Remove o contorno padrão */
+  }
+  
+  .input-name:focus {
+    border-color: #007bff; /* Cor de borda quando em foco */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efeito de sombra ao focar */
+  }
   
   .header {
     display: flex;
