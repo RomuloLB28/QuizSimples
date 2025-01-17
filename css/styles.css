@@ -239,6 +239,51 @@ button:hover {
   height: 40px;
   opacity: 0.5;
 }
+/* Estilo para a tabela */
+table {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+  padding: 15px 20px;
+  border: 1px solid #ddd; /* Borda fina para as células */
+}
+
+th {
+  background-color: #003366; /* Cor de fundo do cabeçalho */
+  color: #fff; /* Cor do texto do cabeçalho */
+  text-transform: uppercase;
+}
+
+tr:nth-child(odd) {
+  background-color: #e0e0e0; /* Cor para linhas ímpares */
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff; /* Cor para linhas pares */
+}
+
+tr:hover {
+  background-color: #cce7ff; /* Destaque ao passar o mouse */
+}
+
+td {
+  color: #333; /* Cor do texto das células */
+}
+
+h2 {
+  color: #fff; /* Cor do título */
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 /* Responsividade */
 
