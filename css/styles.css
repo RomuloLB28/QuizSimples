@@ -1,0 +1,345 @@
+/* Estilos gerais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #001f3f;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Input de nome */
+.input-name {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333333;
+  background-color: #f8f8f8;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  outline: none;
+}
+
+.input-name:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Cabeçalho */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #003366;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  text-decoration: underline;
+}
+
+/* Menu hamburger */
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 24px; /* Tamanho do ícone */
+}
+
+
+.menu-icon {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 2px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.menu-icon::before {
+  top: -10px;
+}
+
+.menu-icon::after {
+  top: 10px;
+}
+
+/* Conteúdo principal */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.quiz-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.question-image {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px 0;
+}
+
+.question-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.speak-button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.speak-button:hover {
+  background-color: #0056b3;
+}
+
+.speak-button .icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+button {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.option-button.correct {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.option-button.incorrect {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Animação do botão de "pulsar" */
+.btn-pulsar {
+  animation: pulsar 1.5s infinite;
+}
+
+@keyframes pulsar {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Ocultar elementos iniciais */
+.name-input,
+.quiz {
+  display: none;
+}
+
+/* Rodapé */
+.footer-s {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #0071e1;
+  width: 100%;
+  height: 40px;
+  opacity: 0.5;
+}
+
+/* Responsividade */
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 620px) {
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #003366;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: left;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  .quiz {
+    width: 100%;
+  }
+
+  .question-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button {
+    max-width: 100%;
+  }
+}
+
+/* Estilos para telas maiores (PCs) */
+@media (min-width: 769px) {
+  .header {
+    padding: 15px 40px;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  main {
+    padding: 40px;
+  }
+
+  .quiz {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .question {
+    font-size: 2rem; /* Aumenta o tamanho da fonte da pergunta */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .question-image {
+    max-width: 100%; /* Mantém a largura adaptável */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 600px; /* Limita a altura máxima */
+  }
+  
+
+  .options {
+    width: 100%; /* Alarga a área das opções */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .option-button {
+    padding: 15px 20px; /* Aumenta o tamanho dos botões */
+    font-size: 1.5rem; /* Aumenta o tamanho do texto dos botões */
+    border-radius: 10px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+}
