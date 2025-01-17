@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FECQUIZ</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">FECQUIZ</div>
+    <button class="menu-button" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="nav-links">
+      <a href="../main.html" class="nav-item">Tela Inicial</a>
+      <a href="html/ranking.html" class="nav-item">Ranking</a>
+    </nav>
+  </header>  
+  
+  <main>
+    <!-- Seção inicial -->
+    <div class="intro">
+      <h1>Bem-vindo ao FECQUIZ!</h1>
+      <p>Teste seus conhecimentos de forma divertida!</p>
+      <button class="btn-pulsar" onclick="showNameInput()">Começar Quiz</button>
+    </div>
+    
+    <!-- Seção para inserir nome -->
+    <div class="name-input" style="display: none;">
+      <p>Insira seu nome para começar:</p>
+      <input type="text" id="username" placeholder="Seu nome" class="input-name">
+      <button class="btn-pulsar" onclick="startQuiz()">Iniciar</button>
+    </div>
+    <div class="quiz" style="display: none;">
+      <div class="question-container">
+        <p class="question"></p>
+        <button class="speak-button" onclick="speakAll()">
+          <img src="imagens/auto-falante.png" alt="Alto-falante" class="icon">
+        </button>
+      </div>
+      <img class="question-image" src="" alt="Imagem da pergunta" style="max-width: 100%; height: 100px; margin: 10px 0;">
+      <div class="options"></div>
+    </div>    
+  </main>
+  <footer class="footer-s">
+    ©FECQUIZ. All rights reserved to Romulo, Joquepede, Wellington, Daiane e Higor
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
